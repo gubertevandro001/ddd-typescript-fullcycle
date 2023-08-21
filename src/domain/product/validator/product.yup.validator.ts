@@ -11,12 +11,13 @@ export default class ProductYupValidator implements ValidatorInterface<Product> 
             yup.object().shape({
                 id: yup.string().required("Id is required"),
                 name: yup.string().required("Name is required"),
-                price: yup.number().moreThan(0).required("Price must be greater than zero")
+                price: yup.number().moreThan(0, "Price must be greater than zero")
             })
             .validateSync(
                 {
                     id: entity.id,
                     name: entity.name,
+                    price: entity.price
                 },
                 {
                     abortEarly: false,
